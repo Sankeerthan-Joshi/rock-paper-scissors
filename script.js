@@ -18,6 +18,7 @@ function computerPlay(){
     let playerSelection = window.prompt("Rock, Paper or Scissors?")
     playerSelection = playerSelection.toLocaleLowerCase();
 
+//Play a round and return result
 function playRound(playerSelection,computerSelection){
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
@@ -48,6 +49,37 @@ function playRound(playerSelection,computerSelection){
         }
     }
 }
-let computer = computerPlay()
-console.log("Computer played:"+computer+"\n"+playRound(playerSelection, computer))
-;
+
+game = function(){
+    let games = 5;
+    let computerSelection;
+    let roundResult;
+    let win=0;
+    for(let i = 0; i<5; i++){
+        let playerSelection = window.prompt("Rock,Paper or Scissors?")+'';
+        playerSelection = playerSelection.toLocaleLowerCase();
+        if(!["rock","paper","scissors"].includes(playerSelection)){
+            i = i-1;
+            continue;
+        }
+        computerSelection = computerPlay();
+        roundResult = playRound(playerSelection, computerSelection );
+        console.log("Computer played:"+computerSelection+"\n"+roundResult);
+        if(roundResult.includes('Tie')){
+            games = games - 1;
+        }
+        if(roundResult.includes('Win')){
+            win = win +1;
+        }
+
+    }
+    if(win>games/2){
+        console.log("You won this round")
+    }else if(win==games){
+        console.log("It's a tie")
+    }else{
+        console.log("You lost! better luck next time")
+    }
+}
+
+game();
