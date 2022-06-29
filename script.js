@@ -1,3 +1,23 @@
+// As prompt window was covering console, Added empty lines
+console.log(`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`)
 // To generate random choice by computer
 function computerPlay(){
     let random = Math.floor(Math.random()*3) + 1;
@@ -15,12 +35,9 @@ function computerPlay(){
     }
     return choice;
 }
-    let playerSelection = window.prompt("Rock, Paper or Scissors?")
-    playerSelection = playerSelection.toLocaleLowerCase();
 
 // Play a round and return result
 function playRound(playerSelection,computerSelection){
-    playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
     if(playerSelection===computerSelection){
         return "It's a Tie!"
@@ -61,7 +78,7 @@ game = function(){
         let playerSelection = window.prompt("Rock,Paper or Scissors?")+'';
 
         // To make playerSelection case-insensitive
-        playerSelection = playerSelection.toLocaleLowerCase();
+        playerSelection = playerSelection.toLowerCase();
 
         // If player enters anything other than rock, paper, scissors the loop is repeated one more time without playing
         if(!["rock","paper","scissors"].includes(playerSelection)){
@@ -90,7 +107,7 @@ game = function(){
     if(win>games/2){
         console.log("You won this round")
     }else if(win==games){
-        console.log("It's a tie")
+        console.log("Tie")
     }else{
         console.log("You lost! better luck next time")
     }
