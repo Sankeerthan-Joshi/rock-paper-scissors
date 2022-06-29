@@ -91,7 +91,7 @@ game = function(){
         roundResult = playRound(playerSelection, computerSelection );
 
         // Displaying computer selection and the round result
-        console.log("Computer played:"+computerSelection+"\n"+roundResult);
+        console.log((i+1) + ". "+"Computer played:"+computerSelection+"\n"+roundResult);
 
         // Neglect the tied games, then whoever wins more is the winner
         if(roundResult.includes('Tie')){
@@ -106,12 +106,14 @@ game = function(){
 
     // To calculate who won the match
     if(win>games/2){
-        console.log("You won this round")
+        console.log("You won this round!")
     }else if(win===games/2){
         console.log("It's a tie! that was close!")
     }else{
         console.log("You lost! better luck next time")
     }
+
+    console.log("Refresh the page for a rematch.")
 }
 
 game();
