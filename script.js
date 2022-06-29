@@ -1,4 +1,4 @@
-//To generate random choice by computer
+// To generate random choice by computer
 function computerPlay(){
     let random = Math.floor(Math.random()*3) + 1;
     let choice;
@@ -18,7 +18,7 @@ function computerPlay(){
     let playerSelection = window.prompt("Rock, Paper or Scissors?")
     playerSelection = playerSelection.toLocaleLowerCase();
 
-//Play a round and return result
+// Play a round and return result
 function playRound(playerSelection,computerSelection){
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
@@ -50,6 +50,8 @@ function playRound(playerSelection,computerSelection){
     }
 }
 
+
+// Function for playing game 5 times
 game = function(){
     let games = 5;
     let computerSelection;
@@ -57,14 +59,24 @@ game = function(){
     let win=0;
     for(let i = 0; i<5; i++){
         let playerSelection = window.prompt("Rock,Paper or Scissors?")+'';
+
+        // To make playerSelection case-insensitive
         playerSelection = playerSelection.toLocaleLowerCase();
+
+        // If player enters anything other than rock, paper, scissors the loop is repeated one more time without playing
         if(!["rock","paper","scissors"].includes(playerSelection)){
             i = i-1;
             continue;
         }
+
         computerSelection = computerPlay();
+
         roundResult = playRound(playerSelection, computerSelection );
+
+        // Displaying computer selection and the round result
         console.log("Computer played:"+computerSelection+"\n"+roundResult);
+
+        // Neglect the tied games, then whoever wins more is the winner
         if(roundResult.includes('Tie')){
             games = games - 1;
         }
@@ -73,6 +85,8 @@ game = function(){
         }
 
     }
+
+    // To calculate who won the match
     if(win>games/2){
         console.log("You won this round")
     }else if(win==games){
