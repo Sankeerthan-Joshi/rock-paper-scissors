@@ -103,11 +103,12 @@ game = function(){
 
     }
 
+
     // To calculate who won the match
     if(win>games/2){
         console.log("You won this round")
-    }else if(win==games){
-        console.log("Tie")
+    }else if(win===games/2){
+        console.log("It's a tie! that was close!")
     }else{
         console.log("You lost! better luck next time")
     }
