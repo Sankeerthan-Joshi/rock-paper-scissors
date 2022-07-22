@@ -67,53 +67,65 @@ function playRound(playerSelection,computerSelection){
     }
 }
 
+// Buttons array
+let buttons = document.querySelectorAll("button");
 
-// Function for playing game 5 times
-game = function(){
-    let games = 5;
-    let computerSelection;
-    let roundResult;
-    let win=0;
-    for(let i = 0; i<5; i++){
-        let playerSelection = window.prompt("Rock,Paper or Scissors?")+'';
-
-        // To make playerSelection case-insensitive
-        playerSelection = playerSelection.toLowerCase();
-
-        // If player enters anything other than rock, paper, scissors the loop is repeated one more time without playing
-        if(!["rock","paper","scissors"].includes(playerSelection)){
-            i = i-1;
-            continue;
-        }
-
-        computerSelection = computerPlay();
-
-        roundResult = playRound(playerSelection, computerSelection );
-
-        // Displaying computer selection and the round result
-        console.log((i+1) + ". "+"Computer played:"+computerSelection+"\n"+roundResult);
-
-        // Neglect the tied games, then whoever wins more is the winner
-        if(roundResult.includes('Tie')){
-            games = games - 1;
-        }
-        if(roundResult.includes('Win')){
-            win = win +1;
-        }
-
-    }
-
-
-    // To calculate who won the match
-    if(win>games/2){
-        console.log("You won this round!")
-    }else if(win===games/2){
-        console.log("It's a tie! that was close!")
-    }else{
-        console.log("You lost! better luck next time")
-    }
-
-    console.log("Refresh the page for a rematch.")
+// To execute playround fn and show the result in div
+function onClick(e){
+    document.querySelector('div').innerText = playRound(this.id, computerPlay());
 }
 
-game();
+// To add event listener for each button
+buttons.forEach(button => button.addEventListener('click', onClick))
+
+
+
+// Function for playing game 5 times
+// game = function(){
+//     let games = 5;
+//     let computerSelection;
+//     let roundResult;
+//     let win=0;
+//     for(let i = 0; i<5; i++){
+//         let playerSelection = window.prompt("Rock,Paper or Scissors?")+'';
+
+//         // To make playerSelection case-insensitive
+//         playerSelection = playerSelection.toLowerCase();
+
+//         // If player enters anything other than rock, paper, scissors the loop is repeated one more time without playing
+//         if(!["rock","paper","scissors"].includes(playerSelection)){
+//             i = i-1;
+//             continue;
+//         }
+
+//         computerSelection = computerPlay();
+
+//         roundResult = playRound(playerSelection, computerSelection );
+
+//         // Displaying computer selection and the round result
+//         console.log((i+1) + ". "+"Computer played:"+computerSelection+"\n"+roundResult);
+
+//         // Neglect the tied games, then whoever wins more is the winner
+//         if(roundResult.includes('Tie')){
+//             games = games - 1;
+//         }
+//         if(roundResult.includes('Win')){
+//             win = win +1;
+//         }
+
+//     }
+
+
+//     // To calculate who won the match
+//     if(win>games/2){
+//         console.log("You won this round!")
+//     }else if(win===games/2){
+//         console.log("It's a tie! that was close!")
+//     }else{
+//         console.log("You lost! better luck next time")
+//     }
+
+//     console.log("Refresh the page for a rematch.")
+// }
+
+// game();
